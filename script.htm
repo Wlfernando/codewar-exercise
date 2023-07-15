@@ -20,7 +20,7 @@ function noBoringZeros(n) {
   return result;
 }
 
-noBoringZeros(1450);
+console.log(noBoringZeros(1450));
 
 // Welcome!
 function greet(language) {
@@ -44,11 +44,10 @@ function greet(language) {
     welsh: 'Croeso'
   }
 
-  if(language === ('IP_ADDRESS_INVALID' || 'IP_ADDRESS_NOT_FOUND' || 'IP_ADDRESS_REQUIRED') ||
-    greeting[language] === undefined) return greeting.english;
-
-  return greeting[language];
+  return greeting[language] ? greeting[language] : greeting.english;
 }
+
+console.log(greet('irish'))
 
 </script>
 </body>
