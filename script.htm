@@ -120,6 +120,20 @@ function getChar(c){
   return String.fromCharCode(c)
 }
 
+// Given a number n, draw stairs using the letter "I", n tall and n wide, with the tallest in the top left.
+function drawStairs(n) {
+  const stair = `I`;
+  let stairs = '';
+  const space = ' ';
+  const anotherStair = '\n';
+
+  for(let i = 0; i < n; i++){
+    stairs += space.repeat(i) + stair + anotherStair;
+  }
+
+  return stairs.replace(/\n$/, '')
+}
+
 </script>
 </body>
 </html>
