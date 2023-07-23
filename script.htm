@@ -123,16 +123,31 @@ function getChar(c){
 // Given a number n, draw stairs using the letter "I", n tall and n wide, with the tallest in the top left.
 function drawStairs(n) {
   const stair = `I`;
-  let stairs = '';
+  let stairs = stair;
   const space = ' ';
   const anotherStair = '\n';
 
-  for(let i = 0; i < n; i++){
-    stairs += space.repeat(i) + stair + anotherStair;
+  for(let i = 1; i < n; i++){
+    stairs += anotherStair + space.repeat(i) + stair;
   }
 
-  return stairs.replace(/\n$/, '')
+  return stairs
 }
+
+//Define a function that removes duplicates from an array of non negative numbers and returns it as a result.
+//The order of the sequence has to stay the same.
+
+function distinct(a) {
+  const result = a.reduce((prevVal, item)=> {
+    if (!prevVal.find(d => d === item)){
+      prevVal.push(item)
+    }
+    return prevVal
+  }, [])
+
+  return result
+}
+
 
 </script>
 </body>
