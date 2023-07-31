@@ -184,6 +184,15 @@ function tiyFizzBuzz(sentence){
   return string
 }
 
+// Your task is simply to count the total number of lowercase letters in a string.
+function lowercaseCount(str){
+  let counter = 0;
+  str.split('').forEach(letter =>{
+    if(/[a-z]/.test(letter)) counter++
+  })
+  return counter
+}
+
 
 </script>
 </body>
