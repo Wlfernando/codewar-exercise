@@ -193,6 +193,11 @@ function lowercaseCount(str){
   return counter
 }
 
+// refactor lowercaseCount
+function lowercaseCount(str){
+    return (str.match(/[a-z]/g) ?? []).length
+}
+
 
 </script>
 </body>
