@@ -198,6 +198,35 @@ function lowercaseCount(str){
     return (str.match(/[a-z]/g) ?? []).length
 }
 
+function properName(noun){
+  let nameCapitalized = '';
+  noun.split(' ').forEach(name =>{
+    nameCapitalized += name[0].toUpperCase() + name.slice(1) + ' '
+  })
+  return nameCapitalized.trim()
+}
+
+// Convert Decimal Degrees to Degrees, Minutes, Seconds.
+// Remember: 1 degree = 60 minutes; 1 minute = 60 seconds.
+// Input: Positive number.
+// Output: Array [degrees, minutes, seconds]. E.g [30, 25, 25]
+//Trailing zeroes should be omitted in the output. E.g
+
+function convert(degrees) {
+  let min = (degrees - Math.floor(degrees)) * 60;
+  let sec = (min - Math.floor(min)) * 60;
+  degrees = Math.floor(degrees);
+  min = Math.floor(min);
+  sec = Math.round(sec);
+
+  if(sec){
+    return [degrees, min, sec]
+  } else if(min){
+    return [degrees, min]
+  } else {
+    return [degrees]
+  }
+}
 
 </script>
 </body>
