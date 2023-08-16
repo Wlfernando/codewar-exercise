@@ -228,6 +228,31 @@ function convert(degrees) {
   }
 }
 
+
+
+function triangular(n) {
+  if(n <= 0) return 0;
+  return Array(n)
+          .fill(1)
+          .map((num, i) => num + i)
+          .reduce((prevVal, item) =>prevVal + item)
+}
+
+// You will be given an array of events, which are represented by strings. The strings are dates in HH:MM:SS format.
+// It is known that all events are recorded in chronological order and two events can't occur in the same second.
+// Return the minimum number of days during which the log is written.
+function checkLogs(log) {
+  let days = 1;
+  log.reduce((prevTime, time)=> {
+    if(prevTime >= time) days++
+    return time
+  }, 0)
+  return log.length !== 0
+    ? days
+    : 0
+}
+
+
 </script>
 </body>
 </html>
