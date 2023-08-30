@@ -303,13 +303,11 @@ function rangeBitCount(a, b) {
   let sum = 0
 
   while(b >= a) {
-    sum += b
+    sum += (b--)
       .toString(2)
       .replace(/0+/g, '')
       .split('')
       .length
-
-    b--
   }
 
   return sum
