@@ -313,6 +313,12 @@ function rangeBitCount(a, b) {
   return sum
 }
 
+function solution(start, finish) {
+  const track = finish - start
+  
+  return Math.floor(track / 3) + track % 3
+}
+
 </script>
 </body>
 </html>
