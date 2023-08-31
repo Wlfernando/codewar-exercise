@@ -315,8 +315,12 @@ function rangeBitCount(a, b) {
 
 function solution(start, finish) {
   const track = finish - start
-  
+
   return Math.floor(track / 3) + track % 3
+}
+
+function countMatches(fullText, searchText) {
+  return (fullText.match(RegExp(searchText, 'g')) ?? []).length
 }
 
 </script>
