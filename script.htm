@@ -20,8 +20,6 @@ function noBoringZeros(n) {
   return result;
 }
 
-console.log(noBoringZeros(1450));
-
 // Welcome!
 function greet(language) {
   const greeting = {
@@ -47,16 +45,11 @@ function greet(language) {
   return greeting[language] ?? greeting.english;
 }
 
-console.log(greet('irish'))
-
 // Simple multiplication: This kata is about multiplying a given number by eight if it is an even number and by nine otherwise.
 
 function simpleMultiplication(number) {
   return (number % 2 === 0) ? number * 8 : number * 9
 }
-
-console.log(simpleMultiplication(3))
-console.log(simpleMultiplication(4))
 
 // Capitalization and Mutability
 
@@ -64,8 +57,6 @@ function capitalizeWord(word) {
   word = word[0].toUpperCase() + word.slice(1);
   return word;
 }
-
-console.log(capitalizeWord('tomas'))
 
 // Who ate the cookie?
 // For this problem you must create a program that says who ate the last cookie. If the input is a string then "Zach" ate the cookie. If the input is a float or an int then "Monica" ate the cookie. If the input is anything else "the dog" ate the cookie. The way to return the statement is: "Who ate the last cookie? It was (name)!"
@@ -313,14 +304,24 @@ function rangeBitCount(a, b) {
   return sum
 }
 
+// An infinite number of shelves are arranged one above the other in a staggered fashion.
+
 function solution(start, finish) {
   const track = finish - start
 
   return Math.floor(track / 3) + track % 3
 }
 
+// Complete the solution so that it returns the number of times the search_text is found within the full_text.
+
 function countMatches(fullText, searchText) {
   return (fullText.match(RegExp(searchText, 'g')) ?? []).length
+}
+
+function distinctNames(list) {
+  return list.filter((name, index, array)=>
+    array.findIndex(item=> item.toLowerCase() === name.toLowerCase()) === index
+  )
 }
 
 </script>
