@@ -369,6 +369,14 @@ function sortThePile(pileOfTowels, weeklyUsedTowels) {
   return pileOfTowels;
 }
 
+// Create a function that checks if the first argument n is divisible by all other arguments
+// (return true if no other arguments)
+
+function isDivisible(){
+  return Array(...arguments)
+    .every((num, i, arr)=> arr.at(0) % num === 0)
+}
+
 </script>
 </body>
 </html>
