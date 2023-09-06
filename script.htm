@@ -377,6 +377,41 @@ function isDivisible(){
     .every((num, i, arr)=> arr.at(0) % num === 0)
 }
 
+/* Reverse a message so that the words and letters passed into it are made lower case and reversed.
+In addition, capitalise the first letter of the newly reversed words.
+If a number or symbol(!#,>) is now in the first position of the word, no capitalisation needs to occur. */
+
+/* function reverseMessage(str) {
+  if(!Boolean(str)) return ''
+  const lowerCase = str.toLowerCase(),
+  invert = lowerCase.split('').reverse().join(''),
+  capitalize = invert
+    .split(' ')
+    .map(word=> word[0].toUpperCase() + word.slice(1)),
+  sentence = capitalize.join(' ')
+
+  return sentence
+} */
+
+/* const reverseMessage = str=> {
+  str
+    .toLowerCase()
+    .split('')
+    .reverse()
+    .join('')
+    .split(' ')
+    .map(word=> word[0].toUpperCase() + word.slice(1))
+    .join(' ')
+} */
+
+const reverseMessage = str=> str
+    .toLowerCase()
+    .split('')
+    .reverse()
+    .join('')
+    .replace(/(^|\s)[a-z]/g, c=> c.toUpperCase())
+
+
 </script>
 </body>
 </html>
