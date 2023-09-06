@@ -189,12 +189,16 @@ function lowercaseCount(str){
     return (str.match(/[a-z]/g) ?? []).length
 }
 
-function properName(noun){
+/* function properName(noun){
   let nameCapitalized = '';
   noun.split(' ').forEach(name =>{
     nameCapitalized += name[0].toUpperCase() + name.slice(1) + ' '
   })
   return nameCapitalized.trim()
+} */
+
+function properName(noun) {
+  return noun.replace(/(^|\s)[a-z]/g, c=> c.toUpperCase())
 }
 
 // Convert Decimal Degrees to Degrees, Minutes, Seconds.
@@ -404,13 +408,22 @@ If a number or symbol(!#,>) is now in the first position of the word, no capital
     .join(' ')
 } */
 
-const reverseMessage = str=> str
+const reverseMessage = str=>
+  str
     .toLowerCase()
     .split('')
     .reverse()
     .join('')
     .replace(/(^|\s)[a-z]/g, c=> c.toUpperCase())
 
+// Capitalize for each word within a string
+
+function capitalize(str) {
+  return str
+    .split(' ')
+    .map(word=> word.at(0).toUpperCase() + word.slice(1))
+    .join(' ')
+}
 
 </script>
 </body>
