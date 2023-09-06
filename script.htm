@@ -425,6 +425,15 @@ function capitalize(str) {
     .join(' ')
 }
 
+// Kevin is noticing his space run out!
+// Write a function that removes the spaces from the values
+// and returns an array showing the space decreasing.
+
+function spacey(array) {
+  return array.map((str, idx, arr)=>
+    arr.slice(0, idx).join('').concat(str)
+  )
+}
 </script>
 </body>
 </html>
