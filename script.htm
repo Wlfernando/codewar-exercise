@@ -434,6 +434,19 @@ function spacey(array) {
     arr.slice(0, idx).join('').concat(str)
   )
 }
+
+const arr = [1, 2, 3, 4, 5, 6]
+
+const circleArea = function(radius) {
+  if(isNaN(radius) || radius < 0) return false
+
+  const area = Math.PI * (radius ** 2),
+  index = area.toString().indexOf('.'),
+  rounded = area.toString().slice(0, index + 3)
+
+  return Number(rounded)
+}
+
 </script>
 </body>
 </html>
