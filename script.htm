@@ -448,8 +448,29 @@ const circleArea = function(radius) {
 // Create a function that takes a string argument
 // and returns that same string with all vowels removed (vowels are "a", "e", "i", "o", "u").
 
-var removeVowels = function(str){
+const removeVowels = function(str){
   return str.replace(/[aiueo]/g, '')
+}
+
+/* Given some points(array A) on the same line,
+determine the minimum number of line segments with length L needed to cover all of the given points.
+A point is covered if it is located inside some segment or on its bounds.
+ */
+
+function segmentCover(A, L) {
+  let segments = 0
+
+  A.sort((a, b)=> a - b)
+
+  for(let i = 0; i !== -1;) {
+    const newIndex = A.findIndex(elem=>
+      elem > A.at(i) + L
+    )
+
+    i = (segments++, newIndex)
+  }
+
+  return segments
 }
 
 </script>
