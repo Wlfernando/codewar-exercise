@@ -457,7 +457,7 @@ determine the minimum number of line segments with length L needed to cover all 
 A point is covered if it is located inside some segment or on its bounds.
  */
 
-function segmentCover(A, L) {
+/* function segmentCover(A, L) {
   let segments = 0
 
   A.sort((a, b)=> a - b)
@@ -471,6 +471,32 @@ function segmentCover(A, L) {
   }
 
   return segments
+} */
+
+function segmentCover(A, L) {
+  console.log(1 + A.filter(x => x > Math.min(...A) + L))
+  return A.length === 0
+    ? 0
+    : 1 + segmentCover(A.filter(x => x > Math.min(...A) + L), L)
+}
+
+for(var i = 0; i < 3; i++) {
+  setTimeout(console.log, 100, i)
+}
+
+// The function is not returning the correct values. Can you figure out why?
+
+function getPlanetName(id){
+  return {
+    1: 'Mercury',
+    2: 'Venus',
+    3: 'Earth',
+    4: 'Mars',
+    5: 'Jupiter',
+    6: 'Saturn',
+    7: 'Uranus',
+    8: 'Neptune'
+  }[id]
 }
 
 </script>
