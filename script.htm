@@ -480,11 +480,15 @@ function segmentCover(A, L) {
     : 1 + segmentCover(A.filter(x => x > Math.min(...A) + L), L)
 }
 
-for(var i = 0; i < 3; i++) {
-  setTimeout(console.log, 100, i)
+function lisa() {
+  for(var i = 0; i < 3; i++) {
+    setTimeout(console.log, 100, i)
+  }
 }
 
 // The function is not returning the correct values. Can you figure out why?
+// done!
+// this is a Inmidiatly invoked object expression
 
 function getPlanetName(id){
   return {
@@ -497,6 +501,33 @@ function getPlanetName(id){
     7: 'Uranus',
     8: 'Neptune'
   }[id]
+}
+
+/* const pets = [
+  {nombre: 'pelusa', edad: 12, tipo:'gato'},
+  {nombre:'puchini', edad:12, tipo:'perro'},
+  {nombre:'pulga', edad:10, tipo:'perro'},
+  {nombre:'chanchito', edad:3, tipo:'perro'}
+]
+
+const idx = pets.reduce((value, item)=> ({
+  [item.nombre]: item, ...value
+}))
+
+console.log(idx) */
+
+
+// This kata is part of a series on the Morse code. After you solve this kata, you may move to the next one.
+
+const decodeMorse = function(morseCode){
+  return morseCode
+    .trim()
+    .replace(/\S+/g, letter=> MORSE_CODE[letter])
+    .replace(/\s+/g, match=>
+      match.length === 1
+        ? ''
+        : ' '
+    )
 }
 
 </script>
