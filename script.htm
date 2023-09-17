@@ -530,6 +530,45 @@ const decodeMorse = function(morseCode){
     )
 }
 
+
+/* var decodeBits = function(bits){
+  return bits
+    .replace(/(1+)|0+/g, (char, signal, offset, string)=> {
+      const
+        {length} = char,
+        ones = string.match(/1+/)[0].length,
+        ceros = (string.match(/0+/) || '0')[0].length,
+        pattern = ones >= ceros
+
+      console.log({char, length, offset}, pattern)
+
+      switch(Boolean(signal)) {
+        case true:
+          if(pattern && length % 3 === 0) return '-'
+          else return '.'
+        default:
+          if(length % 3 === 0) return ' '
+          else if(length % 7 === 0) return '   '
+          else return ''
+      }
+    })
+}
+
+const url = 'http://www.example.com/page.html';
+const domain = url.match(/^(?:https?:\/\/)?(?:www\.)?([^:\/\n]+)/i)[1];
+console.log(domain); */
+
+/* /^(?:https?:\/\/)?(?:www\.)?([^:\/\n]+)/i
+/^(?:https?:\/\/)?(?:www\.)?([^:\/\n.]+)/i */
+
+
+// Write a function that when given a URL as a string,
+// parses out just the domain name and returns it as a string. For example:
+
+function domainName(url){
+  return url.match(/^(?:https?:\/\/)?(?:www\.)?([^:.]+)/i)[1];
+}
+
 </script>
 </body>
 </html>
