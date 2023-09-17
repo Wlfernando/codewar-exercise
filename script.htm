@@ -603,6 +603,21 @@ function pillars(numPill, dist, width) {
   return distOnCm * distantPill + width * middlePills
 }
 
+// Your task is to find the first element of an array that is not consecutive.
+
+function firstNonConsecutive (arr) {
+  let prevVal = arr.at(0)
+
+  for(const num of arr) {
+    if(prevVal - num !== 0) return num
+    else prevVal = num + 1
+  }
+
+  return null
+}
+
+
+
 </script>
 </body>
 </html>
