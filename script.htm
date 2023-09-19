@@ -531,31 +531,8 @@ const decodeMorse = function(morseCode){
 }
 
 
-/* var decodeBits = function(bits){
-  return bits
-    .replace(/(1+)|0+/g, (char, signal, offset, string)=> {
-      const
-        {length} = char,
-        ones = string.match(/1+/)[0].length,
-        ceros = (string.match(/0+/) || '0')[0].length,
-        pattern = ones >= ceros
-
-      console.log({char, length, offset}, pattern)
-
-      switch(Boolean(signal)) {
-        case true:
-          if(pattern && length % 3 === 0) return '-'
-          else return '.'
-        default:
-          if(length % 3 === 0) return ' '
-          else if(length % 7 === 0) return '   '
-          else return ''
-      }
-    })
-}
-
-const url = 'http://www.example.com/page.html';
-const domain = url.match(/^(?:https?:\/\/)?(?:www\.)?([^:\/\n]+)/i)[1];
+/* const url = 'http://www.example.com/page.html';
+const domain = url.match(/^(?:https?:\/\/)?(?:www\.)?([^:\/\n]+)/i);
 console.log(domain); */
 
 /* /^(?:https?:\/\/)?(?:www\.)?([^:\/\n]+)/i
@@ -616,6 +593,54 @@ function firstNonConsecutive (arr) {
   return null
 }
 
+
+const order = ["manzana", "banana", "naranja", "banana", "manzana", "banana"];
+
+const result = order.reduce(function (prevVal, item) {
+  !prevVal[item]
+    ? prevVal[item] = 1
+    : prevVal[item]++
+
+  return prevVal;
+}, {})
+
+// When transmitting the Morse code, the international standard specifies that:
+
+// "Dot" – is 1 time unit long.
+// "Dash" – is 3 time units long.
+// Pause between dots and dashes in a character – is 1 time unit long.
+// Pause between characters inside a word – is 3 time units long.
+// Pause between words – is 7 time units long.
+// However, the standard does not specify how long that "time unit" is.
+// And in fact different operators would transmit at different speed.
+// An amateur person may need a few seconds to transmit a single character,
+// a skilled professional can transmit 60 words per minute, and robotic transmitters may go way faster.
+
+const decodeBits = function(bits){
+  const
+    test = /^0|0$/.test(bits),
+    rates = test
+      ? bits
+          .replace(/^0|0$/g, '')
+          .match(/(1+|0+)/g)
+          .map(rate=> rate.length)
+      : bits
+          .match(/(1+|0+)/g)
+          .map(rate=> rate.length),
+    minRate = Math.min(...rates);
+
+  return bits
+    .replace(/(1+)|0+/g, ({length}, signal)=> {
+      if(signal) {
+          if(length === minRate) return '.'
+          else return '-'
+      } else {
+          if(length === minRate) return ''
+          else if(length === minRate * 3) return ' '
+          else return '   '
+      }
+    })
+} // need to use decodeMorse
 
 
 </script>
