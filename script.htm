@@ -642,6 +642,23 @@ const decodeBits = function(bits){
     })
 } // need to use decodeMorse
 
+function biggest(nums) {
+  function maxNum(a, b) {
+    const
+      first = ''.concat(a, b),
+      second = ''.concat(b, a)
+
+    return first < second
+      ? 1
+      : -1
+  }
+
+  return nums
+    .sort(maxNum)
+    .join('')
+    .replace(/^0+/, '0')
+}
+
 
 </script>
 </body>
