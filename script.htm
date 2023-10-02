@@ -682,6 +682,27 @@ function sumNoDuplicates(numList) {
     }, 0)
 }
 
+/* Some people just have a first name;
+some people have first and last names and some people have first, middle and last names.
+You task is to initialize the middle names (if there is any). */
+
+function initializeNames(name){
+  const
+    nameParsed = name.split(' '),
+    firstName = 0,
+    lastName = nameParsed.length - 1;
+
+  return nameParsed
+    .map((n, idx)=> {
+      const middleName = idx > firstName && idx < lastName;
+
+      return middleName
+        ? n.at(0) + '.'
+        : n
+    })
+    .join(' ')
+}
+
 
 </script>
 </body>
