@@ -519,14 +519,21 @@ console.log(idx) */
 
 // This kata is part of a series on the Morse code. After you solve this kata, you may move to the next one.
 
+
+
+
 const decodeMorse = function(morseCode){
+  const space = {
+    1: '',
+    3: ' '
+  }
+
   return morseCode
     .trim()
-    .replace(/\S+/g, letter=> MORSE_CODE[letter])
-    .replace(/\s+/g, match=>
-      match.length === 1
-        ? ''
-        : ' '
+    .replace(/(\S+)|\s+/g, ({length}, letter)=>
+      letter
+        ? MORSE_CODE[letter]
+        : space[length]
     )
 }
 
@@ -618,28 +625,29 @@ const result = order.reduce(function (prevVal, item) {
 
 const decodeBits = function(bits){
   const
-    test = /^0|0$/.test(bits),
-    rates = test
-      ? bits
-          .replace(/^0|0$/g, '')
-          .match(/(1+|0+)/g)
-          .map(rate=> rate.length)
-      : bits
-          .match(/(1+|0+)/g)
-          .map(rate=> rate.length),
-    minRate = Math.min(...rates);
+    extraCerosRmd = bits.replace(/^0+|0+$/g, ''),
+    rates = extraCerosRmd
+      .match(/1+|0+/g)
+      .map(rate=> rate.length),
+    oneUnit = Math.min(...rates),
+    threeUnits = oneUnit * 3,
+    sevenUnits = oneUnit * 7,
+    onSignal = {
+      [oneUnit]: '.',
+      [threeUnits]: '-'
+    },
+    silence = {
+      [oneUnit]: '',
+      [threeUnits]: ' ',
+      [sevenUnits]: '   '
+    };
 
-  return bits
-    .replace(/(1+)|0+/g, ({length}, signal)=> {
-      if(signal) {
-          if(length === minRate) return '.'
-          else return '-'
-      } else {
-          if(length === minRate) return ''
-          else if(length === minRate * 3) return ' '
-          else return '   '
-      }
-    })
+  return extraCerosRmd
+    .replace(/(1+)|0+/g, ({length}, signal)=>
+      signal
+        ? onSignal[length]
+        : silence[length]
+    )
 } // need to use decodeMorse
 
 function biggest(nums) {
