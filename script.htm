@@ -711,6 +711,19 @@ function initializeNames(name){
     .join(' ')
 }
 
+// Create a function that always returns true for every item in a given list.
+// However, if an element is the word "flick", switch to always returning the opposite boolean value.
+
+function flickSwitch(arr){
+  let shift = true;
+
+  return arr.map(word=>{
+    if(word === 'flick') shift = !shift;
+
+    return shift
+  })
+}
+
 
 </script>
 </body>
