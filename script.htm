@@ -788,6 +788,25 @@ function hammingDistance (a, b) {
   return count
 }
 
+/* You are provided an array of strings that represent the cage and Chuck's opponents.
+Your task, in traditional Chuck style, is to take their heads off!!
+Throw punches, kicks, headbutts (or more likely - regex or iteration...)
+but whatever you do, remove their heads. Return the same array of strings,
+but with the heads ('O') removed and replaced with a space (' '). */
+
+function headSmash(array) {
+  if(array.length === 0) {
+    return 'Gym is empty'
+
+  } else if(Number.isInteger(array)) {
+    return "This isn't the gym!!"
+
+  } else {
+    return array.map(heads=> heads.replaceAll('O', ' '))
+
+  }
+}
+
 </script>
 </body>
 </html>
