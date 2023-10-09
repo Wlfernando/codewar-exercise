@@ -765,6 +765,29 @@ function ipsBetween(start, end) {
   return base(end) - base(start)
 }
 
+/* The hamming distance between a pair
+of numbers is the number
+of binary bits that differ in their binary notation. */
+
+function hammingDistance (a, b) {
+  const
+    binary = num=> num
+      .toString(2)
+      .split(''),
+    binaryA = binary(a),
+    binaryB = binary(b);
+
+  let
+    i = Math.max(binaryA.length, binaryB.length),
+    count = 0;
+
+  while(i--) {
+    if(~~binaryA.pop() !== ~~binaryB.pop()) count++
+  }
+
+  return count
+}
+
 </script>
 </body>
 </html>
