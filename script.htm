@@ -824,6 +824,17 @@ var hotpo = function(n){
   return count
 }
 
+/* In this Kata, we will check if a string contains consecutive letters
+as they appear in the English alphabet and if each letter occurs only once. */
+
+function solve(s){
+  return s
+    .split('')
+    .sort()
+    .map(char=> char.charCodeAt(0))
+    .every((code, idx, arr)=> code === arr[0] + idx)
+}
+
 </script>
 </body>
 </html>
