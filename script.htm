@@ -807,6 +807,23 @@ function headSmash(array) {
   }
 }
 
+/* The Collatz conjecture (also known as 3n+1 conjecture)
+is a conjecture that applying the following algorithm to any number we will always eventually reach one: */
+
+var hotpo = function(n){
+  let count = 0;
+
+  while(n !== 1) {
+    n % 2 === 0
+      ? n /= 2
+      : n = 3 * n + 1
+
+    count++
+  }
+
+  return count
+}
+
 </script>
 </body>
 </html>
