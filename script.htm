@@ -701,13 +701,11 @@ function initializeNames(name){
     lastName = nameParsed.length - 1;
 
   return nameParsed
-    .map((n, idx)=> {
-      const middleName = idx > firstName && idx < lastName;
-
-      return middleName
+    .map((n, idx)=>
+      idx > firstName && idx < lastName
         ? n.at(0) + '.'
         : n
-    })
+    )
     .join(' ')
 }
 
@@ -833,6 +831,25 @@ function solve(s){
     .sort()
     .map(char=> char.charCodeAt(0))
     .every((code, idx, arr)=> code === arr[0] + idx)
+}
+
+function stringConstructing(a, s) {
+  let
+    string = String(),
+    index = 0,
+    count = 0;
+
+  while(s !== string) {
+    while(s[index] === string[index]) index++
+
+    s.includes(string)
+      ? string += a
+      : string = string.slice(0, index) + string.slice(index + 1)
+
+    count++
+  }
+
+  return count
 }
 
 </script>
