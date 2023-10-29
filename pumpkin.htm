@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="background__pumpkin">
+    <div class="pumpkin">
+      <div class="pumpkin__oval"></div>
+      <div class="pumpkin__oval"></div>
+      <div class="pumpkin__oval"></div>
+      <div class="pumpkin__oval"></div>
+      <div class="pumpkin__oval"></div>
+      <div class="pumpkin__peduncle"></div>
+    </div>
+  </div>
+  <style>
+    :root * {
+      margin: 0;
+    }
+
+    .background__pumpkin {
+      width: 400px;
+      height: 300px;
+      background: #784972;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .pumpkin {
+      width: 270px;
+      height: 210px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      position: relative;
+      bottom: 35px;
+    }
+
+    .pumpkin * {
+      background-color: #F7FFCF;
+    }
+
+    .pumpkin__oval {
+      box-shadow:
+        0 0 0 30px #F7FFCF,
+        0 0 0 40px #784972;
+      width: 40px;
+      height: 90px;
+      border-radius: 50%;
+    }
+
+    .pumpkin__oval:nth-child(even) {
+      z-index: 1;
+    }
+
+    .pumpkin__oval:nth-child(3) {
+      z-index: 2;
+    }
+
+    .pumpkin__peduncle {
+      z-index: 2;
+      width: 22px;
+      height: 55px;
+      position: absolute;
+      top: 40px;
+      border-radius:
+        50% 50% 100% 13%
+        / 28% 28% 0% 0%;
+    }
+  </style>
+</body>
+</html>
