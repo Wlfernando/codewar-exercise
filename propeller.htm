@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="propeller__background">
+    <div class="propeller__circle"></div>
+    <div class="propeller__wrapper">
+      <div class="propeller__rectangle"></div>
+      <div class="propeller__rectangle"></div>
+    </div>
+    <div class="propeller__wrapper propeller__wrapper_vertical">
+      <div class="propeller__rectangle"></div>
+      <div class="propeller__rectangle"></div>
+    </div>
+  </div>
+  <style>
+    :root * {
+      margin: 0;
+    }
+
+    .propeller__background {
+      height: 100%;
+      background: #7B3738;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .propeller__circle {
+      width: 140px;
+      height: 140px;
+      background-color: transparent;
+      box-shadow: inset 0 0 0 40px #FCAF17;
+      border-radius: 50%;
+    }
+
+    .propeller__wrapper {
+      width: 100%;
+      height: 140px;
+      position: absolute;
+      display:flex;
+    }
+
+    .propeller__wrapper_vertical {
+      transform: rotate(90deg);
+    }
+
+    .propeller__rectangle {
+      width: 50%;
+      height: 40px;
+      background-color: #FCAF17;
+    }
+
+    .propeller__rectangle:last-child {
+      align-self: end;
+    }
+  </style>
+</body>
+</html>
