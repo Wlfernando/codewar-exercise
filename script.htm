@@ -852,6 +852,50 @@ function stringConstructing(a, s) {
   return count
 }
 
+function returnPromiseError() {
+  return Promise.reject(new Error("Error. Algo ha fallado..."));
+}
+
+(function testPromiseRejectHandler() {
+  returnPromiseError()
+  .catch((err) => {
+    console.log(`Error ${err.name} con el mensaje ${err.message} ocurrió durante la ejecución del código, pero lo hemos manejado`);
+  });
+})();
+
+/* The concept of "smooth number" is applied to all those numbers whose prime factors are lesser than or equal to 7: 60 is a smooth number (2 * 2 * 3 * 5), 111 is not (3 * 37).
+
+More specifically, smooth numbers are classified by their highest prime factor and your are tasked with writing a isSmooth/is_smooth function that returns a string with this classification as it follows:
+
+2-smooth numbers should be all defined as a "power of 2", as they are merely that;
+3-smooth numbers are to return a result of "3-smooth";
+5-smooth numbers will be labelled as "Hamming number"s (incidentally, you might appreciate this nice kata on them);
+7-smooth numbers are classified as "humble number"s;
+for all the other numbers, just return non-smooth. */
+
+function isSmooth(n) {
+  let
+    divisor = 2,
+    division;
+
+  while (n > 1) {
+    if (7 < divisor) break;
+
+    division = n / divisor;
+
+    Number.isInteger(division)
+      ? n = division
+      : divisor++;
+  }
+
+  switch (divisor) {
+    case 2: return "power of 2"
+    case 3: return "3-smooth"
+    case 5: return "Hamming number"
+    case 7: return "humble number"
+    default: return "non-smooth"
+  }
+}
 </script>
 </body>
 </html>
