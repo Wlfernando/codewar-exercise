@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="background">
+    <div class="square"></div>
+  </div>
+  <style>
+    :root > * {
+      margin: 0;
+    }
+
+    .background {
+      width: 400px;
+      height: 300px;
+      background: #7D4886;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .square {
+      width: calc(38% - 2px);
+      height: 50%;
+      transform: rotate(45deg);
+      background-image: radial-gradient(#7D4886 47%, #670053 47%);
+    }
+  </style>
+</body>
+</html>
