@@ -933,6 +933,13 @@ function digitize(n) {
   return n.toString().split("").reverse().map(Number);
 }
 
+function reduce(fraction) {
+  const gcd = (a, b) => b ? gcd(b, a % b) : a;
+  const theGCD = gcd(...fraction);
+
+  return fraction.map(int => int / theGCD)
+}
+
 </script>
 </body>
 </html>
