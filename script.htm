@@ -940,6 +940,16 @@ function reduce(fraction) {
   return fraction.map(int => int / theGCD)
 }
 
+function diamondsAndToads(sentence, fairy) {
+  const counter = (reg) => (sentence.match(new RegExp(reg, 'gi')) ?? [])
+    .map(char => char === char.toUpperCase() ? 2 : 1)
+    .reduce((acc, int) => acc + int, 0)
+
+  return fairy === 'good' ?
+    {ruby: counter('r'), crystal: counter('c')} :
+    {python: counter('p'), squirrel: counter('s')}
+}
+
 </script>
 </body>
 </html>
