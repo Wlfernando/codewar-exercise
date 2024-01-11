@@ -950,6 +950,25 @@ function diamondsAndToads(sentence, fairy) {
     {python: counter('p'), squirrel: counter('s')}
 }
 
+// Holiday V - SeaSick Snorkelling
+
+function seaSick(x) {
+  const length = x.length
+  let isChange = x[0]
+  let count = 0
+
+  for (let i = 1; i < length; i++) {
+    if (isChange !== x[i]) {
+      isChange = x[i]
+      count++
+    }
+  }
+
+  return count <= length * .20 ?
+    "No Problem" :
+    "Throw Up" ;
+}
+
 </script>
 </body>
 </html>
