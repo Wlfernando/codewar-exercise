@@ -969,6 +969,20 @@ function seaSick(x) {
     "Throw Up" ;
 }
 
+function eqAll(iterable) {
+  const iterator = iterable[Symbol.iterator]()
+  let current = iterator.next()
+  let next = iterator.next()
+
+  while (!next.done) {
+    if (current.value !== next.value) return false
+    current = next
+    next = iterator.next()
+  }
+
+  return true
+}
+
 </script>
 </body>
 </html>
