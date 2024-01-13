@@ -983,6 +983,33 @@ function eqAll(iterable) {
   return true
 }
 
+function beginning(xs) {
+  const theString = xs
+  const sizeNumber = (length) => +theString.slice(0, length)
+  const setExp = (exp) => new RegExp(`^${exp}`)
+
+  let length = 1
+  let int = sizeNumber(length)
+  let res = int
+  let match
+
+  while (xs.length) {
+    match = setExp(int++)
+
+    if (!match.test(xs)) {
+      xs = theString
+      int = sizeNumber(++length)
+      res = int
+      if (1e9 < res) return res
+      continue
+    }
+
+    xs = xs.replace(match, '')
+  }
+
+  return res
+}
+
 </script>
 </body>
 </html>
