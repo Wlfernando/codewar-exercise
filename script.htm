@@ -1040,6 +1040,47 @@ const countStairNums = (n) => {
   return count % (1e9 + 7)
 }
 
+const countStairNums2 = (n) => {
+  if (n === 1) return 9;
+  const
+    num = Array(n)
+      .fill(null)
+      .map((_, i) => i % 2 === 0 ? 1 : 0),
+    length = num.length,
+    { isInteger } = Number;
+
+  let
+    counter = 0,
+    i = length % 2 === 0 ? length - 1 : length - 2;
+
+  const setNext = () => {
+    while (isInteger(num[i])) {
+      num[i] = num[i - 1] - 1
+      if (num[i] < 0) num[i] = num[i] % 2 === 0 ? 0 : 1
+      i++
+    }
+    counter++
+  }
+
+  while (num.at(-1) < 10) {
+    if (!isInteger(num[i - 1])) {
+      num[i++]++
+      setNext()
+    }
+
+    if (num[i - 1] === 9) {
+      i--
+    }
+
+    if (num[i] < num[i - 1]) {
+      num[i++] += 2
+      setNext()
+    }
+    i--
+  }
+  return counter % (1e9 + 7)
+}
+
 </script>
 </body>
 </html>
