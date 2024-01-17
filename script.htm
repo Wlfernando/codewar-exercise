@@ -1063,6 +1063,7 @@ const countStairNums2 = (n) => {
   }
 
   while (num.at(-1) < 10) {
+
     if (!isInteger(num[i - 1])) {
       num[i++]++
       setNext()
@@ -1101,6 +1102,50 @@ const countStairNums3 = (n) => {
   }
 
   return count % (1e9 + 7)
+}
+
+const countStairNums4 = (n) => {
+  const add = (a, b) => {
+    let res = '', c = 0
+    a = a.split('')
+    b = b.split('')
+    while (a.length || b.length || c) {
+      c += ~~a.pop() + ~~b.pop()
+      res = c % 10 + res
+      c = c > 9
+    }
+    return res
+  }
+
+  const lenDig = '1' + '0'.repeat(n)
+  const memo = Array()
+
+  let count = 0
+
+  digits: for(let num = lenDig.slice(0, -1), i, j; num !== lenDig; num = add(num, '1')) {
+    if (memo.some(int => num.includes(int))) continue
+    i = 0
+    j = i + 1
+
+    while (j < n) {
+      if (Math.abs(num[i] - num[j]) !== 1) {
+        memo.unshift(num[i] + num[j])
+        continue digits
+      }
+      i++, j++
+    }
+    count++
+  }
+
+  return count
+}
+
+function sumArray(array) {
+  if (!array || array.length < 3) return 0
+
+  const [min, max] = [Math.min(...array), Math.max(...array)]
+
+  return array.reduce((acc, int) => acc + int) - min - max
 }
 
 </script>
