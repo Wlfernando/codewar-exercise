@@ -1081,6 +1081,28 @@ const countStairNums2 = (n) => {
   return counter % (1e9 + 7)
 }
 
+const countStairNums3 = (n) => {
+  const length = BigInt(10 ** n)
+  let count = 0
+
+  digits: for (let num = BigInt(10 ** (n - 1)), strNum, interrupt = / /; num < length; num++) {
+    strNum = String(num)
+
+    if(interrupt.test(strNum)) continue
+
+    for (let i = interrupt.source.length - 1, j = i + 1; j < n; i++, j++) {
+      if (Math.abs(strNum[i] - strNum[j]) !== 1) {
+        interrupt = new RegExp('^' + strNum.slice(0, j + 1))
+        continue digits
+      }
+    }
+
+    count++
+  }
+
+  return count % (1e9 + 7)
+}
+
 </script>
 </body>
 </html>
