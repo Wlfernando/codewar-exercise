@@ -1148,6 +1148,30 @@ function sumArray(array) {
   return array.reduce((acc, int) => acc + int) - min - max
 }
 
+const countStairsNums = (length) => {
+  length = length - 1
+  const countStairs = (length, num, memo = new Map()) => {
+    if (num.slice(-2) === '-1' || num.slice(-3) === '910') return 0
+    if (!length) return 1
+    if (memo.has(num)) return memo.get(num)
+    const setNum = (dig) => num + (Number(num.at(-1)) + dig)
+    const down = length - 1
+    memo.set(num, countStairs(down, setNum(1), memo) + countStairs(down, setNum(-1), memo))
+    console.log(memo)
+    return memo.get(num)
+  }
+
+  let count = 0
+
+  for (let i = 1; i < 5; i++) {
+    count += countStairs(length, String(i)) * 2
+  }
+
+  count += countStairs(length, '9')
+
+  return count % (1e9 + 7)
+}
+
 </script>
 </body>
 </html>
