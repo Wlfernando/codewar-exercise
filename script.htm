@@ -1193,6 +1193,80 @@ function countStairsNums5(n) {
   return memo.reduce((acc, row) => (acc + row.at(-1)) % mod, 0)
 }
 
+function kingIsInCheck (chessboard) {
+  const wKing = 9812, bQueen = 9819, bRook = 9820, bBishop = 9821, bKnight = 9822, bPawn = 9823, none = 32,
+    chessMap = new Map();
+
+  let kingLoc;
+
+  const
+    searchThreadPerpendicular = (watch) => {
+      const [x, y] = kingLoc;
+
+      for (let i = watch === 'west' ? x - 1 : y - 1, coordinates, aPiece; 0 < i; i--) {
+        coordinates = watch === 'west' ? i + 'x' + y : x + 'x' + i ;
+        if (!chessMap.has(coordinates)) continue
+        aPiece = chessMap.get(coordinates)
+        if ([bQueen, bRook].some(p => p === aPiece)) return true
+        break
+      }
+      return false
+    },
+
+    searchThreadDiagonal = (watch) => {
+      const [x, y] = kingLoc;
+
+      let i = watch === 'north-west' ? x - 1 : x + 1, j = y - 1, coordinates, aPiece, aPawn = 0;
+
+      while (0 < i && 0 < j) {
+        coordinates = (watch === 'north-west' ? i-- : i++) + 'x' + j--
+        aPawn++
+        if (!chessMap.has(coordinates)) continue
+        aPiece = chessMap.get(coordinates)
+        if (aPawn === 1 || [bQueen, bBishop].some(p => p === aPiece)) return true
+        break
+      }
+      return false
+    };
+
+  let loc, piece;
+
+  return chessboard
+    .some((line, lIndex) =>
+      line
+        .some((column, cIndex) => {
+          loc = (cIndex + 1) + 'x' + (lIndex + 1),
+          piece = column.charCodeAt();
+
+          switch (piece) {
+            case none:
+              return
+            case wKing:
+              chessMap.set(wKing, loc)
+            default:
+              chessMap.set(loc, piece)
+          }
+
+          if (!chessMap.has(wKing)) {
+            return
+          }
+
+          if (!kingLoc) {
+            kingLoc = chessMap.get(wKing).split('x').map(Number)
+
+            return [
+              searchThreadPerpendicular('west'),
+              searchThreadPerpendicular('north'),
+              searchThreadDiagonal('north-west'),
+              searchThreadDiagonal('north-east')
+            ].some(Boolean)
+          }
+
+          //console.log(cIndex + 1, lIndex + 1)
+        })
+    )
+}
+
 </script>
 </body>
 </html>
