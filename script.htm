@@ -1267,6 +1267,22 @@ function kingIsInCheck (chessboard) {
     )
 }
 
+function fractran(code, n) { 
+  const arr = [...code.matchAll(/(\d+)\/(\d+)/g)].map(([,num,den]) => [BigInt(num), BigInt(den)])
+  const length = arr.length
+  const cycles = 1e3
+
+  for (let i = 0, j = 1, mul; i < length && j <= cycles; i++) {
+    mul = arr[i][0] * n
+    if (mul % arr[i][1] !== 0n) continue
+    n = mul / arr[i][1]
+    i = -1
+    j++
+  }
+  
+  return n
+}
+
 </script>
 </body>
 </html>
